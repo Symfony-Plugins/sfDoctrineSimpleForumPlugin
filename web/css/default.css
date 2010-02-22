@@ -4,7 +4,7 @@
 /* Awesome Buttons */
 
 .awesome, .awesome:visited {
-	background: #222 url(http://zurb.com/images/alert-overlay.png) repeat-x; 
+	background: #222 url(../images/alert-overlay.png) repeat-x; 
 	display: inline-block; 
 	padding: 5px 10px 6px; 
 	color: #fff; 
@@ -40,7 +40,7 @@
     
 
 	#thread_table th {
-		background:#EEEEEE url(http://mootools.net/assets/images/gradient-bottom.png) repeat-x scroll left bottom;
+		background:#EEEEEE url(../images/gradient-bottom.png) repeat-x scroll left bottom;
 		border-bottom:1px solid #D4D4D4;
 		color:#686C70;
 		padding-top:0.6em;
