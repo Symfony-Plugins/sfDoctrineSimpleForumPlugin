@@ -114,7 +114,7 @@ ul, li {
 	padding-left:.75em;
 	}		
 #crumbs li a {
-	background:url(/images/crumbs.gif) no-repeat right center;
+	background:url(../images/crumbs.gif) no-repeat right center;
 	display:block;
 	padding:0 15px 0 0;
 	}							
@@ -378,7 +378,7 @@ ol.pinglist li a:hover {
     border: 1px solid #c93;
     padding: 10px 12px;
     z-index: +1;
-    background: #ffc url(/images/pointer.gif) no-repeat -10px 5px;
+    background: #ffc url(../images/pointer.gif) no-repeat -10px 5px;
 }
 
 /* The pointer image is hadded by using another span */
@@ -388,7 +388,7 @@ ol.pinglist li a:hover {
     top: 5px;
     width: 10px;
     height: 19px;
-    background: url(/images/pointer.gif) left top no-repeat;
+    background: url(../images/pointer.gif) left top no-repeat;
 }
 input.text, input.title,
 textarea, select {
