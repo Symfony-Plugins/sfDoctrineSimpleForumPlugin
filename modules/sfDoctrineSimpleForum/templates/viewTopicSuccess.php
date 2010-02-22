@@ -45,9 +45,8 @@ $(function(){
              	<div class="avatar avatar-32">
          			<img alt='' src='http://www.gravatar.com/avatar/86d4d7ab1f67a450b74b7ec8a85cb759?s=32&amp;d=%3Cpath_to_url%3E&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />
     			</div>
-    			<br />
          		<cite class="fn"><? echo $post->getUser()->getUsername() ?></cite> <span class="says"><?php echo __("says", null, 'sfDoctrineSimpleForum'); ?>:</span><br />    
-         	</div><img alt='' src='http://www.gravatar.com/avatar/86d4d7ab1f67a450b74b7ec8a85cb759?s=32&amp;d=%3Cpath_to_url%3E&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />
+         	</div>
             <div class="comment-meta commentmetadata">
             	<a href="http://nspeaks.com/32/get-threaded-comments-on-your-blog/#comment-10770"><?php echo $post->getCreatedAt('U')?></a>
             </div>

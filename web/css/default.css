@@ -275,6 +275,7 @@ ol.commentlist li div.reply a:hover {
 }
 ol.commentlist li div.reply a {
 	color:#fff;
+	cursor: pointer;
 	text-decoration:none;
 	background: #C73E14;
 	border: 1px solid #C73E14;
