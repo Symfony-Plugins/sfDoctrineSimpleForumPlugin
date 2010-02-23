@@ -33,7 +33,7 @@ class BasesfDoctrineSimpleForumActions extends sfActions
   	$this->forum = Doctrine::getTable("sfDoctrineSimpleForumForum")->findOneById($request->getParameter("id"));	
   
   	// forward to 404 page if id is invalid
-  	$this->forward404Unless($this->board);
+  	//$this->forward404Unless($this->board);
   }
   
   public function executeViewTopic(sfWebRequest $request)

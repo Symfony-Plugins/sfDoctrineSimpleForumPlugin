@@ -11,6 +11,7 @@
 		<dl class="list_form">
 			<dt>
 				<label><?php echo __("Topic Title", null, 'sfDoctrineSimpleForum'); ?>:</label>
+				<?php echo $form->renderHiddenFields(); ?>
 			</dt>
 			<dd>
 				<?php echo $form['title']->renderError()?>
