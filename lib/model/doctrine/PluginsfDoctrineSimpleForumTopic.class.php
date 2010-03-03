@@ -55,5 +55,25 @@ abstract class PluginsfDoctrineSimpleForumTopic extends BasesfDoctrineSimpleForu
 					  ->execute();
 		return (count($topic)>0) ? $topic : array();
 	}
-	
+
+        // lock thread
+        public function lock($status)
+        {
+            $this->setIsLocked($status);
+            $this->save();
+        }
+
+        // sticky thread
+        public function sticky($status)
+        {
+            $this->setIsSticked($status);
+            $this->save();
+        }
+        public function deleteTopic()
+        {
+            $query = Doctrine_Query::create()->from("sfDoctrineSimpleForumTopic")
+                                             ->where("id = ?", $this->getId())
+                                              ->delete()
+                                              ->execute();
+        }
 }

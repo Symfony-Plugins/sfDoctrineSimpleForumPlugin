@@ -3,52 +3,66 @@ sfGuardPermission:
     name: moderator
 
 sfGuardUser:
-  1:
+  user_1:
     username:       johndoe
     password:       johndoe
-  2:
+    email_address:  johndoe@example.com
+  user_2:
     username:       tarzanman
     password:       tarzanman
-  3:
+    email_address:  tarzanman@example.com
+  user_3:
     username:       testuser
     password:       testuser
+    email_address:  testuser@example.com
+    Groups: [sf_doctrine_simple_forum_moderator_group]
+
+sfGuardGroup:
+  sf_doctrine_simple_forum_moderator_group:
+    name:           sf_doctrine_simple_forum_moderator_group
+    description:    sfDoctrineSimpleForumModerator Group
+    Permissions:    [sf_doctrine_simple_forum_moderator_permission]
 
 sfGuardPermission:
-  testuser_is_moderator:
-    name:           testuser
-    description: moderator
+  sf_doctrine_simple_forum_moderator_permission:
+    name: sf_doctrine_simple_forum_moderator
+    description: sfDoctrineSimpleForumModerator Permission
  
 sfDoctrineSimpleForumCategory:
-  c1:
+  category_1:
     id: 1
     name:        Public Boards
     description: We talk about stuff here.
     rank:        1
-  c2:
+  category_2:
     id: 2
     name:        Miscellaneous
     description: Secret matters
     rank:        2
-
-sfDoctrineSimpleForumTopic:
-  1:
-    title:       Installing foo
-    forum_id:    1
-    user_id:     2
-  2:
-    title:       Stick Moo
-    forum_id:    2
-    user_id:     1
-    is_sticked:  true
-
 sfDoctrineSimpleForumForum:
-  1:
+  forum_1:
     name:        Foo discussion
     description: Everybody is foo here
-    category_id: 1
+    Category: category_1
     rank:        1
-  2:
+  forum_2:
     name:        Bar discussion
     description: If you want a bar, this is where you will find it
-    category_id: 2
+    Category:    category_2
     rank:        2
+sfDoctrineSimpleForumTopic:
+  topic_1:
+    title:       Installing foo
+    Forum:       forum_1
+    User:        user_3
+  topic_2:
+    title:       Stick Moo
+    Forum:       forum_2
+    User:        user_3
+    is_sticked:  true
+sfDoctrineSimpleForumPost:
+  post_1:
+    content: Hello, how is everyone?
+    User: user_3
+    Topic: topic_2
+    Forum: forum_2

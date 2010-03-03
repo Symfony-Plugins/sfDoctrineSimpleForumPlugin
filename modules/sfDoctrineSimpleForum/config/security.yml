@@ -10,15 +10,3 @@ addPost:
 deletePost:
   is_secure:   on
   credentials: [moderator]
-
-deleteTopic:
-  is_secure:   on
-  credentials: [moderator]
-    
-toggleStick:
-  is_secure:   on
-  credentials: [moderator]
-
-toggleLock:
-  is_secure:   on
-  credentials: [moderator]

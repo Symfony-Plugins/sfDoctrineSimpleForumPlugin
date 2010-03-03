@@ -1,17 +1,14 @@
 <?php use_helper('I18N'); ?>
-
-<h3 class="toolbar"><?php echo $forum->getName()?></h3>
-<p><?php echo $forum->getDescription() ?></p>
 <ul id="crumbs">
 	<li><?php echo link_to("Forum Index", "sf_doctrine_simple_forum_index")?></li>
 	<li><?php echo $forum->getName(); ?></li>
 </ul>
+<h3 class="subtoolbar"><?php echo $forum->getDescription() ?></h3>
 <br />
 
-<?php if(count($board)==0 && $sf_user->isAuthenticated()):?>
-	<div class="info"><?php echo __("Oooops! There are no topics for this board. ", null, 'sfDoctrineSimpleForum')?><br /><?php echo __("Why not create one?", null, 'sfDoctrineSimpleForum')?></div>
+<?php if(count($topics)==0 && $sf_user->isAuthenticated()):?>
+	<p class="success"><?php echo __("Oooops! There are no topics for this board. ", null, 'sfDoctrineSimpleForum')?><br /><?php echo __("Why not create one?", null, 'sfDoctrineSimpleForum')?></p>
 <?php endif?>
-
 <table id="thread_table">	
 	<thead>
 		<tr>
@@ -61,5 +58,5 @@
 	</tbody>
 </table>
 <?php if($sf_user->isAuthenticated()):?>
-<? echo link_to(__("Create Topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_create_topic", array("id"=>$forum->getId()), array("class"=>"medium awesome"))?>
+<?php echo link_to(__("Create Topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_create_topic", array("id"=>$forum->getId()), array("class"=>"awesome"))?>
 <?php endif;?>

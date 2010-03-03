@@ -10,6 +10,24 @@ sf_doctrine_simple_forum_view_topic:
 sf_doctrine_simple_forum_create_topic:
   url: /forum/topic/:id/create
   params: { module: sfDoctrineSimpleForum, action: createTopic }
+sf_doctrine_simple_forum_delete_topic:
+  url: /forum/topic/:id/delete
+  params: { module: sfDoctrineSimpleForum, action: deleteTopic }
+sf_doctrine_simple_forum_edit_topic:
+  url: /forum/topic/:id/edit
+  params: { module: sfDoctrineSimpleForum, action: editTopic }
 sf_doctrine_simple_forum_view_latest_feed:
   url: /forum/latest/feed
   params: { module: sfDoctrineSimpleForum, action: viewLatestFeed, sf_format: xml }
+sf_doctrine_simple_forum_lock_topic:
+  url: /forum/topic/:id/lock
+  params: { module: sfDoctrineSimpleForum, action: lockTopic }
+sf_doctrine_simple_forum_unlock_topic:
+  url: /forum/topic/:id/unlock
+  params: { module: sfDoctrineSimpleForum, action: unlockTopic }
+sf_doctrine_simple_forum_sticky_topic:
+  url: /forum/topic/:id/sticky
+  params: { module: sfDoctrineSimpleForum, action: stickyTopic }
+sf_doctrine_simple_forum_unsticky_topic:
+  url: /forum/topic/:id/unsticky
+  params: { module: sfDoctrineSimpleForum, action: unstickyTopic }

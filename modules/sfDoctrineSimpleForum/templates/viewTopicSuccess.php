@@ -1,6 +1,6 @@
-<?php use_helper("Date", "I18N", "Javascript")?>
+<?php use_helper("Date", "i18N")?>
 
-<?php echo javascript_tag('
+<script type="text/javascript">
 $(function(){
 
 	$(".comment-reply-link").click(function(){
@@ -11,29 +11,56 @@ $(function(){
 	});
 
 });
-'); ?>
- 
+</script>
+<div style="float: left; margin-right: 10px">
+    <div class="box">
+        <h3>Admin Tools</h3>
+        <ul class="list_links">
+            <li>
+                <?php
+                    if($topic->getIsLocked()):
+                        echo link_to(__("Unlock this topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_unlock_topic", array("id"=>$topic->getId()));
+                    else:
+                        echo link_to(__("Lock this topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_lock_topic", array("id"=>$topic->getId()));
+                    endif;
+                ?>
+            </li>
+            <li>
+                <?php
+                    if($topic->getIsSticked()):
+                        echo link_to(__("Unsticky this topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_unsticky_topic", array("id"=>$topic->getId()));
+                    else:
+                        echo link_to(__("Sticky this topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_sticky_topic", array("id"=>$topic->getId()));
+                    endif;
+                ?>
+            </li>
+            <li><?php echo link_to(__("Delete this topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_delete_topic", array("id"=>$topic->getId()))?></li>
+            <li><?php echo link_to(__("Edit this topic", null, 'sfDoctrineSimpleForum'), "sf_doctrine_simple_forum_edit_topic", array("id"=>$topic->getId()))?></li>
+        </ul>
+    </div>
+</div>
+<div style="float: left; width: 700px">
 <div id="respond" style="display:none">
-
 </div>
 <h3 class="toolbar"><?php echo $topic->getTitle()?></h3>
 	<ul id="crumbs">
 		<li><?php echo link_to("Forum Index", "sf_doctrine_simple_forum_index")?></li>
-		<li><?php echo link_to($topic->getForum()->getCategories()->getName(), "sf_doctrine_simple_forum_view_board", array("id"=>$topic->getForumId(), "slug"=>$topic->getForum()->getSlug()))?></li>
+		<li><?php echo link_to($topic->getForum()->getCategory()->getName(), "sf_doctrine_simple_forum_view_board", array("id"=>$topic->getForumId(), "slug"=>$topic->getForum()->getSlug()))?></li>
 		<li><?php echo $topic->getTitle()?></li>
 	</ul>
 <br />
+<?php if($sf_user->hasFlash('success')): ?>
+    <p class="success"><?php echo $sf_user->getFlash('success'); ?>
+<?php endif; ?>
+<?php if($sf_user->hasFlash('error')): ?>
+    <p class="error"><?php echo $sf_user->getFlash('error'); ?>
+<?php endif; ?>
 <?php if($topic->getIsLocked()):?>
 <p class="notice">
 	<?php echo image_tag("/sfDoctrineSimpleForumPlugin/images/lock.png", array("style"=>"vertical-align: -3px; margin-right: 5px;"))?> 
 	<?php echo __("This thread is closed for posting.", null, 'sfDoctrineSimpleForum'); ?>
 </p>
 <?php endif;?>
-<?php if($sf_user->hasFlash('success')): ?>
-        <p class="success">
-				<?php echo $sf_user->getFlash('success'); ?>
-		</p>
-<?php endif; ?>
 
 <ol class="commentlist">
 	<?php  $count = 0 ?>
@@ -85,5 +112,4 @@ $(function(){
 	</ul>
 	</form>
 <?php endif?>
-
-
+</div>

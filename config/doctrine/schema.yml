@@ -16,20 +16,14 @@ sfDoctrineSimpleForumForum:
     description: { type: string }
     rank: { type: integer }
     category_id: { type: integer(4) }
-    # Performance Enhancers
-    stripped_name: { type: string(255) }
-    latest_post_id: { type: integer(4) }
     nb_posts: { type: integer(4) }
     nb_topics: { type: integer(4) }
   relations:
     sfDoctrineSimpleForumCategory:
-      alias: Categories
+      alias: Category
       local: category_id
       foreign: id
       onDelete: cascade
-    sfDoctrineSimpleForumPost:
-      local: latest_post_Id
-      foreign: id
 sfDoctrineSimpleForumTopic:
   actAs: [Timestampable, SoftDelete,Sluggable]
   tableName: sf_doctrine_simple_forum_topic
@@ -39,15 +33,12 @@ sfDoctrineSimpleForumTopic:
     is_sticked: { type: boolean, default: false }
     is_locked: { type: boolean, default: false }
     forum_id: { type: integer(4) }    
-    # performance enhancers
-    latest_post_id: { type: integer(4) }
-    user_id:       { type: integer(4) }
-    stripped_title: { type: string(255) }
+    user_id:       { type: integer }
     nb_posts:      { type: integer(4), default: 0 }
     nb_views:      { type: integer(10), default: 0 }
   relations:
     sfDoctrineSimpleForumForum:
-      alias: forum
+      alias: Forum
       local: forum_id
       foreign: id
       onDelete: cascade
@@ -60,7 +51,6 @@ sfDoctrineSimpleForumTopic:
       alias: User
       local: user_id
       foreign: id
-
 sfDoctrineSimpleForumPost:
   actAs: [Timestampable, SoftDelete]
   tableName: sf_doctrine_simple_forum_post
@@ -71,21 +61,20 @@ sfDoctrineSimpleForumPost:
     topic_id: { type: integer(4) }
     is_reply_to_comment: { type: integer(1), default: 0 }
     reply_id: { type: integer(10) }
-    user_id: { type: integer(4) }
-    # performance enhancers
+    user_id: { type: integer }
+    first_post: { type: integer(1) }
     forum_id: { type: integer(4) }
   relations:
     sfDoctrineSimpleForumTopic:
-      alias: topic
+      alias: Topic
       local: topic_id
       foreign: id
-      onDelete: cascade
     sfGuardUser:
       alias: User
       local: user_id
       foreign: id
-      onDelete: cascade
     sfDoctrineSimpleForumForum:
+      alias: Forum
       local: forum_id
       foreign: id
       onDelete: cascade
@@ -94,14 +83,10 @@ sfDoctrineSimpleForumTopicView:
   tableName: sf_doctrine_simple_forum_topic_view
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
-    user_id: { type: integer(4), primary: true }
-    topic_id : {type: integer(4), primary: true }
+    user_id: { type: integer }
+    topic_id : {type: integer }
   relations:
     sfGuardUser:
+      alias: User
       local: user_id
-      local: id
-      onDelete: cascade
-    sfDoctrineSimpleForumTopic:
-      local: topic_id
       foreign: id
-      onDelete: cascade

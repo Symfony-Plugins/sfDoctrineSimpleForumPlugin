@@ -7,7 +7,6 @@
  <?php foreach($latest_posts as $post):?>
 <entry>
   <title type="html"><?php  echo $post->getTopic()->getTitle()?>: </title>
-  <link rel="alternate" href="http://www.erepublik.com/en/forum/topic/123672/yes-you-saw-it-coming-from-a-mile-away/1"></link>
   <updated><?php echo $post->getCreatedAt()?></updated>
   <id><?php echo $post->getId()?></id>
   <summary type="html"><?php echo $post->getContent()?></summary>

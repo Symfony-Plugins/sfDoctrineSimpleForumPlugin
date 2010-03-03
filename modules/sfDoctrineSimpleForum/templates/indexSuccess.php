@@ -13,7 +13,7 @@
     <tbody>
     <?php foreach ($forums as $forum): ?>
         <tr class="category">
-          <td class="category_header" colspan="4"><?=$forum->getCategories()->getName() ?></td>
+          <td class="category_header" colspan="4"><?=$forum->getCategory()->getName() ?></td>
         </tr>        
       <?php include_partial('forum', array('forum' => $forum)) ?>
     <?php endforeach; ?>
